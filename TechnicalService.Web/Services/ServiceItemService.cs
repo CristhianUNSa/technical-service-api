@@ -17,9 +17,15 @@ namespace TechnicalService.Web.Services
         }
         public async Task<ServiceItem> AddServiceItem(ServiceItem item)
         {
+            item.Code = Helpers.StringHelper.Get5CharacterRandomString();
             context.ServiceItems.Add(item);
             await context.SaveChangesAsync();
             return item;
+        }
+
+        public ServiceItem GetWhere(Func<ServiceItem, bool> satisfyThis)
+        {
+            return context.ServiceItems.FirstOrDefault(satisfyThis);
         }
     }
 }

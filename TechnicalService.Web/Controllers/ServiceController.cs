@@ -31,5 +31,17 @@ namespace TechnicalService.Web.Controllers
             }
             return response;
         }
+
+        [HttpGet]
+        [Route("GetServiceItem")]
+        public ActionResult<ServiceItem> GetServiceItem(string itemId)
+        {
+            var response = _service.GetWhere(item => item.Code.Equals(itemId));
+            if (response == null)
+            {
+                return NotFound();
+            }
+            return response;
+        }
     }
 }

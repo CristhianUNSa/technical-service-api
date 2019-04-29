@@ -9,5 +9,6 @@ namespace TechnicalService.Web.Services
     public interface IServiceItemService
     {
         Task<ServiceItem> AddServiceItem(ServiceItem item);
+        ServiceItem GetWhere(Func<ServiceItem, bool> satisfyThis);
     }
 }
